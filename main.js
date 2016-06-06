@@ -14,7 +14,10 @@ let win;
 
 function createWindow() {
   // Create the browser window.
-  win = new BrowserWindow({width: 500, height: 200, resizable: false});
+  win = new BrowserWindow({width: 500,
+    height: 200,
+    resizable: false,
+    title: 'SocialLightHouse'});
 
   // and load the index.html of the app.
   win.loadURL(`file://${__dirname}/index.html`);
