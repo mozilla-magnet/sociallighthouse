@@ -14,8 +14,8 @@ let win;
 
 function createWindow() {
   // Create the browser window.
-  win = new BrowserWindow({width: 500,
-    height: 200,
+  win = new BrowserWindow({width: 200,
+    height: 300,
     resizable: false,
     title: 'SocialLightHouse'});
 
@@ -56,12 +56,16 @@ app.on('activate', () => {
   }
 });
 
-ipcMain.on('advertise', (event, url, extraParams) => {
-  console.log('Advertising ' + url + ' with params ' + extraParams);
+ipcMain.on('advertise', (event, url) => {
+  //console.log('Advertising ' + url);
   gimbus.shorten(url, (short) => {
-    console.log('Shorted url ', short);
+    //console.log('Shorted url ', short);
     EddystoneBeacon.advertiseUrl(short);
   });
+});
+
+ipcMain.on('stop-advertise', (event) => {
+  EddystoneBeacon.stop();
 });
 
 // In this file you can include the rest of your app's specific main process
