@@ -14,8 +14,8 @@ let win;
 
 function createWindow() {
   // Create the browser window.
-  win = new BrowserWindow({width: 200,
-    height: 300,
+  win = new BrowserWindow({width: 300,
+    height: 460,
     resizable: false,
     title: 'SocialLightHouse'});
 
@@ -23,7 +23,7 @@ function createWindow() {
   win.loadURL(`file://${__dirname}/index.html`);
 
   // Open the DevTools.
-  // win.webContents.openDevTools();
+  //win.webContents.openDevTools();
 
   // Emitted when the window is closed.
   win.on('closed', () => {
@@ -56,6 +56,9 @@ app.on('activate', () => {
   }
 });
 
+app.commandLine.appendSwitch('remote-debugging-port', '8315');
+app.commandLine.appendSwitch('host-rules', 'MAP * 127.0.0.1');
+
 ipcMain.on('advertise', (event, url) => {
   //console.log('Advertising ' + url);
   gimbus.shorten(url, (short) => {
@@ -67,6 +70,3 @@ ipcMain.on('advertise', (event, url) => {
 ipcMain.on('stop-advertise', (event) => {
   EddystoneBeacon.stop();
 });
-
-// In this file you can include the rest of your app's specific main process
-// code. You can also put them in separate files and require them here.

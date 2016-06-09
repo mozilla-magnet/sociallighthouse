@@ -1,0 +1,33 @@
+body {
+  margin: 10px;
+  background: #dde6e6;
+  font-family: Verdana;
+  font-size: 15px;
+}
+
+h2 {
+  font-size: 17px;
+}
+
+input {
+  width: 100%;
+}
+
+textarea {
+  width: 100%;
+  height: 100px;
+  resize: none;
+}
+
+section {
+  text-align: center;
+}
+
+p {
+  text-align: justify
+}
+
+button {
+  font-size: 20px;
+  margin-top: 15px;
+}

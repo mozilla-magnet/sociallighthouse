@@ -5,6 +5,7 @@
   "scripts": {
     "start": "electron .",
     "package": "node ./node_modules/electron-packager/cli.js ./ SocialLightHouse --platform=darwin --arch=x64 --version=1.2.2 --ignore=node_modules/electron-rebuild --asar --icon=icon.icns",
+    "package-linux": "node ./node_modules/electron-packager/cli.js ./ SocialLightHouse --platform=linux --arch=x64 --version=1.2.2 --ignore=node_modules/electron-rebuild --asar --icon=icon.icns",
     "electron": "node ./node_modules/electron-prebuilt/cli.js .",
     "rebuild": "node ./node_modules/.bin/electron-rebuild"
   },
