@@ -63,6 +63,8 @@ ipcMain.on('advertise', (event, url) => {
   //console.log('Advertising ' + url);
   gimbus.shorten(url, (short) => {
     //console.log('Shorted url ', short);
+    // Hack since gimbus urls has a space at the begining
+    short = short.replace(' ', '%20');
     EddystoneBeacon.advertiseUrl(short);
   });
 });
