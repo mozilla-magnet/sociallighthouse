@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded',function() {
 		}
 		const value = twHandler.value.trim();
 		var interests = intrst.value.trim();
-		if (value && interests) {
+		if (value) {
 			interests = urlencode(interests);
 			const cardUrl = `https://tengam.org/sociallighthouse?twitterId=${value}&interests=${interests}`;
 			ipc.send('advertise', cardUrl);
