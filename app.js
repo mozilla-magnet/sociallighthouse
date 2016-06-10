@@ -2,6 +2,8 @@ let ipc = require('electron').ipcRenderer;
 let urlencode = require('urlencode');
 
 document.addEventListener('DOMContentLoaded',function() {
+	const twHandler = document.getElementById('twitterId');
+	const intrst = document.getElementById('interests');
 	toggleAdvertising(true);
 	getAdvertiseButton().addEventListener('click', function() {
 		const button = getAdvertiseButton();
@@ -10,8 +12,8 @@ document.addEventListener('DOMContentLoaded',function() {
 			toggleAdvertising(true);
 			return;
 		}
-		const value = document.getElementById('twitterId').value.trim();
-		var interests = document.getElementById('interests').value.trim();
+		const value = twHandler.value.trim();
+		var interests = intrst.value.trim();
 		if (value && interests) {
 			interests = urlencode(interests);
 			const cardUrl = `https://tengam.org/sociallighthouse?twitterId=${value}&interests=${interests}`;
@@ -19,14 +21,17 @@ document.addEventListener('DOMContentLoaded',function() {
 			toggleAdvertising(false);
 		}
 	});
+
+	function toggleAdvertising(enable) {
+		const button = getAdvertiseButton();
+		button.dataset.advertise = enable;
+		twHandler.disabled = !enable;
+		intrst.disabled = !enable;
+		button.textContent = enable ? 'Broadcast' : 'Stop broadcast';
+	}
+
+	function getAdvertiseButton() {
+		return document.getElementById('advertise');
+	}
+
 });
-
-function toggleAdvertising(enable) {
-	const button = getAdvertiseButton();
-	button.dataset.advertise = enable;
-	button.textContent = enable ? 'Advertise' : 'Stop advertising';
-}
-
-function getAdvertiseButton() {
-	return document.getElementById('advertise');
-}
